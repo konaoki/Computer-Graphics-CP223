@@ -18,6 +18,7 @@ public class PythTriangle extends JPanel implements MouseListener{
     int[] ys = new int[4];
     sqrs = new Polygon[3];
     int hypot;
+    //coordinates of triangle
     xs[0]=0;
     xs[1]=size;
     xs[2]=size;
@@ -26,7 +27,9 @@ public class PythTriangle extends JPanel implements MouseListener{
     int height=(int)Math.round(Math.tan(Math.toRadians(angle))*size);
     ys[2]=height;
     hypot=(int)Math.round(height/Math.sin(Math.toRadians(angle)));
+    //instiante the triangle according to the coordinates
     triangle = new Polygon(xs,ys,3);
+    //coordinates for the first square
     xs[0]=0;
     xs[1]=size;
     xs[2]=xs[1];
@@ -35,7 +38,9 @@ public class PythTriangle extends JPanel implements MouseListener{
     ys[1]=ys[0];
     ys[2]=0;
     ys[3]=ys[2];
+    //instantiate first square
     sqrs[0]=new Polygon(xs,ys,4);
+    //second sqr
     xs[0]=size;
     xs[1]=size+height;
     xs[2]=xs[1];
@@ -45,6 +50,7 @@ public class PythTriangle extends JPanel implements MouseListener{
     ys[2]=height;
     ys[3]=ys[2];
     sqrs[1]=new Polygon(xs,ys,4);
+    //third sqr
     xs[0]=0;
     xs[1]=size;
     xs[2]=size-height;
@@ -54,6 +60,7 @@ public class PythTriangle extends JPanel implements MouseListener{
     ys[2]=size+height;
     ys[3]=size;
     sqrs[2]=new Polygon(xs,ys,4);
+    //saving the colors
     color = Color.red;
     colorRect = Color.green;
   }
@@ -62,12 +69,12 @@ public class PythTriangle extends JPanel implements MouseListener{
     super.paintComponent(g);  //without this no background color set.
 
     Graphics2D g2d = (Graphics2D)g; //cast so we can use JAVA2D.
-    g2d.translate(getWidth()/2,getHeight()/2);
-    g2d.setPaint(color);
-    g2d.fillPolygon(triangle);
-    g2d.setPaint(colorRect);
+    g2d.translate(getWidth()/2,getHeight()/2); //set the center
+    g2d.setPaint(color); //set the color
+    g2d.fillPolygon(triangle);//color the triangle
+    g2d.setPaint(colorRect);//set the color
     for(int i=0; i<3; i++){
-      g2d.fillPolygon(sqrs[i]);
+      g2d.fillPolygon(sqrs[i]); //color the squares
     }
 
   }
@@ -75,6 +82,7 @@ public class PythTriangle extends JPanel implements MouseListener{
   public void mouseClicked(MouseEvent e)
   {
     System.out.println("Mouse Clicked");
+    //change the colors back and forth when clicked
     if(color.equals(Color.red)){
       color = Color.green;
       colorRect = Color.red;

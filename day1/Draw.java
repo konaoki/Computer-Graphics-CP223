@@ -1,23 +1,12 @@
-
-/**
- * BasicDraw.java
- *
- *
- * Template for beginning graphics programs.
- *
- */
-
 import javax.swing.*;
 
 public class Draw
 {
-
-    //For this type of program, event handling determines the path of
-    //execution.  This main method "looks" like it sets up the frame
-    //and then stops.
-
+    //main method
     public static void main(String[] args){
+    //instantiate the canvas class
 		PythTriangle myCanvas = new PythTriangle();
+    //instantiate jframe
 		JFrame myFrame = new JFrame();
 		myFrame.setTitle("Basic Draw");
 		//myFrame.setSize(100,100);
@@ -32,4 +21,4 @@ public class Draw
 		myFrame.setVisible(true);
 
     }
-} // BasicDraw
+} //Draw
