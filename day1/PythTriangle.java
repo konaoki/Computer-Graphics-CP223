@@ -9,9 +9,9 @@ public class PythTriangle extends JPanel implements MouseListener{
   Polygon triangle;
   Polygon[] sqrs;
   public PythTriangle(){
-    int size=100;
+    int size=200;
     int angle=30;
-    setPreferredSize(new Dimension(500,500));
+    setPreferredSize(new Dimension(1000,1000));
     setBackground(Color.lightGray);
     addMouseListener(this);
     int[] xs = new int[4];
