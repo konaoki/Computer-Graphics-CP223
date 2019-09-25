@@ -11,15 +11,15 @@ public class ColorPanel extends JPanel{
   double angle=Math.PI;
   Ellipse2D[] circles;
   public ColorPanel(){
-    setPreferredSize(new Dimension(1000,1000));
+    setPreferredSize(new Dimension(1000,1000)); //set canvas size
     colors=new Color[3];
     circles=new Ellipse2D.Double[3];
     colors[0]=Color.red;
     colors[1]=Color.green;
     colors[2]=Color.blue;
     for(int i=0; i<3; i++){
-      xs[i]=(int)Math.round(radius*Math.cos(angle+i*2*Math.PI/3));
-      ys[i]=(int)Math.round(radius*Math.sin(angle+i*2*Math.PI/3));
+      xs[i]=(int)Math.round(radius*Math.cos(angle+i*2*Math.PI/3)); //x positions of circles
+      ys[i]=(int)Math.round(radius*Math.sin(angle+i*2*Math.PI/3)); //y positions of circles
     }
   }
   public void paintComponent(Graphics g)
@@ -31,7 +31,7 @@ public class ColorPanel extends JPanel{
 
     for(int i=0; i<3; i++){
       g2d.setPaint(colors[i]); //set the color
-      circles[i]=new Ellipse2D.Double(xs[i],ys[i],radius*4,radius*4);
+      circles[i]=new Ellipse2D.Double(xs[i],ys[i],radius*4,radius*4); //create circle shapes
       g2d.fill(circles[i]);//color the circle
     }
     Area a1,a2;
@@ -39,24 +39,24 @@ public class ColorPanel extends JPanel{
     a2=new Area(circles[1]);
     a1.intersect(a2);
     g2d.setPaint(new Color(colors[0].getRed(),colors[1].getGreen(),0));
-    g2d.fill(a1);
+    g2d.fill(a1); //fill intersection between circle 1 and 2
     a1=new Area(circles[1]);
     a2=new Area(circles[2]);
     a1.intersect(a2);
     g2d.setPaint(new Color(0,colors[1].getGreen(),colors[2].getBlue()));
-    g2d.fill(a1);
+    g2d.fill(a1);//fill intersection between circle 2 and 3
     a1=new Area(circles[2]);
     a2=new Area(circles[0]);
     a1.intersect(a2);
     g2d.setPaint(new Color(colors[0].getRed(),0,colors[2].getBlue()));
-    g2d.fill(a1);
+    g2d.fill(a1);//fill intersection between circle 3 and 1
     a1=new Area(circles[0]);
     a2=new Area(circles[1]);
     a1.intersect(a2);
     a2=new Area(circles[2]);
     a1.intersect(a2);
     g2d.setPaint(new Color(colors[0].getRed(),colors[1].getGreen(),colors[2].getBlue()));
-    g2d.fill(a1);
+    g2d.fill(a1);//fill intersection between all circles
 
 
 

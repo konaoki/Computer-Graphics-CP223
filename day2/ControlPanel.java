@@ -59,6 +59,7 @@ class ControlPanel extends JPanel implements ChangeListener
 
    public void stateChanged(ChangeEvent ev)
    {
+     //when state changes, change circle colors accordingly and repaint
      cPanel.colors[0]=new Color(redSlider.getValue(),0,0);
      cPanel.colors[1]=new Color(0,greenSlider.getValue(),0);
      cPanel.colors[2]=new Color(0,0,blueSlider.getValue());
