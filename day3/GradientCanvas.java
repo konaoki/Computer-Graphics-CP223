@@ -19,12 +19,12 @@ public class GradientCanvas extends JPanel{
     int[] xs = {(int)Math.round(triRadius*Math.cos(angle+1*2*Math.PI/3)),(int)Math.round(triRadius*Math.cos(angle+2*2*Math.PI/3)),(int)Math.round(triRadius*Math.cos(angle+3*2*Math.PI/3))};
     int[] ys = {(int)Math.round(triRadius*Math.sin(angle+1*2*Math.PI/3))-yOffset,(int)Math.round(triRadius*Math.sin(angle+2*2*Math.PI/3))-yOffset,(int)Math.round(triRadius*Math.sin(angle+3*2*Math.PI/3))-yOffset};
     shapes[1]=new Polygon(xs,ys,3);
-    gradients[1]=new GradientPaint(0,size/2,Color.blue,0,-size/2,Color.black);
+    gradients[1]=new GradientPaint(0,(float)triRadius,Color.blue,0,ys[1],Color.black);
     angle=Math.toRadians(30);
     xs = new int[]{(int)Math.round(triRadius/2*Math.cos(angle+1*2*Math.PI/3)),(int)Math.round(triRadius/2*Math.cos(angle+2*2*Math.PI/3)),(int)Math.round(triRadius/2*Math.cos(angle+3*2*Math.PI/3))};
     ys = new int[]{(int)Math.round(triRadius/2*Math.sin(angle+1*2*Math.PI/3))-yOffset,(int)Math.round(triRadius/2*Math.sin(angle+2*2*Math.PI/3))-yOffset,(int)Math.round(triRadius/2*Math.sin(angle+3*2*Math.PI/3))-yOffset};
     shapes[2]=new Polygon(xs,ys,3);
-    gradients[2]=new GradientPaint(0,size/2,Color.black,0,-size/2,Color.blue);
+    gradients[2]=new GradientPaint(0,ys[0],Color.black,0,ys[1],Color.blue);
   }
   public void paintComponent(Graphics g){
     super.paintComponent(g);
