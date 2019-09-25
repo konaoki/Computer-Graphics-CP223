@@ -34,29 +34,31 @@ public class ColorPanel extends JPanel{
       circles[i]=new Ellipse2D.Double(xs[i],ys[i],radius*4,radius*4); //create circle shapes
       g2d.fill(circles[i]);//color the circle
     }
-    Area a1,a2;
-    a1=new Area(circles[0]);
-    a2=new Area(circles[1]);
-    a1.intersect(a2);
-    g2d.setPaint(new Color(colors[0].getRed(),colors[1].getGreen(),0));
-    g2d.fill(a1); //fill intersection between circle 1 and 2
-    a1=new Area(circles[1]);
-    a2=new Area(circles[2]);
-    a1.intersect(a2);
-    g2d.setPaint(new Color(0,colors[1].getGreen(),colors[2].getBlue()));
-    g2d.fill(a1);//fill intersection between circle 2 and 3
-    a1=new Area(circles[2]);
-    a2=new Area(circles[0]);
-    a1.intersect(a2);
-    g2d.setPaint(new Color(colors[0].getRed(),0,colors[2].getBlue()));
-    g2d.fill(a1);//fill intersection between circle 3 and 1
-    a1=new Area(circles[0]);
-    a2=new Area(circles[1]);
-    a1.intersect(a2);
-    a2=new Area(circles[2]);
-    a1.intersect(a2);
-    g2d.setPaint(new Color(colors[0].getRed(),colors[1].getGreen(),colors[2].getBlue()));
-    g2d.fill(a1);//fill intersection between all circles
+    Area[] as = new Area[3];
+    Area tempA=null;
+    for(int i=0; i<3; i++){
+      as[i]=new Area(circles[i]);
+    }
+    //fill intersections between circles
+    int[] cs = new int[3];
+    for(int i=0; i<3; i++){
+      cs[0]=colors[0].getRed();
+      cs[1]=colors[1].getGreen();
+      cs[2]=colors[2].getBlue();
+      cs[(i+2)%3]=0;
+      g2d.setPaint(new Color(cs[0],cs[1],cs[2]));
+      tempA=new Area(circles[i]);
+      tempA.intersect(as[(i+1)%3]);
+      g2d.fill(tempA);
+    }
+    tempA=as[0];
+    tempA.intersect(as[1]);
+    tempA.intersect(as[2]);
+    cs[0]=colors[0].getRed();
+    cs[1]=colors[1].getGreen();
+    cs[2]=colors[2].getBlue();
+    g2d.setPaint(new Color(cs[0],cs[1],cs[2]));
+    g2d.fill(tempA);//fill intersection between all circles
 
 
 
