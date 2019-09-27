@@ -7,6 +7,7 @@ class SpiralGUI extends JPanel implements ChangeListener
  	SpiralCanvas sc;
 	JSlider angleSlider;
   JSlider numSlider;
+  JSlider blueSlider;
  	public SpiralGUI(SpiralCanvas sc)
 	{
 		this.sc=sc;
@@ -40,8 +41,24 @@ class SpiralGUI extends JPanel implements ChangeListener
 		n.add(nlabel);
     n.add(numSlider);
 		add(n);
+
+    blueSlider = new JSlider(JSlider.VERTICAL,0,81,1);
+    blueSlider.addChangeListener(this);
+    blueSlider.setMajorTickSpacing(50);
+    blueSlider.setMinorTickSpacing(10);
+    blueSlider.setPaintTicks(true);
+    blueSlider.setPaintLabels(true);
+
+    JLabel blabel = new JLabel("Blue");
+    JPanel b = new JPanel();
+    b.setLayout(new BoxLayout(b, BoxLayout.Y_AXIS));
+    b.add(blabel);
+      b.add(blueSlider);
+    add(b);
+
     sc.angle=angleSlider.getValue();
     sc.num=numSlider.getValue();
+    sc.sqrNum=blueSlider.getValue();
     sc.repaint();
    }//end contructor
 
@@ -50,6 +67,7 @@ class SpiralGUI extends JPanel implements ChangeListener
      //when state changes, change circle colors accordingly and repaint
      sc.angle=angleSlider.getValue();
      sc.num=numSlider.getValue();
+     sc.sqrNum=blueSlider.getValue();
      sc.repaint();
 	 }//end stateChanged
 
