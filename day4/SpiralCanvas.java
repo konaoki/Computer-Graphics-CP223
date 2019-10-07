@@ -67,6 +67,7 @@ public class SpiralCanvas extends JPanel{
   }
   Color getColor(int i){
     Color c = new Color(255-i*255/(num-1),255-i*40/(num-1),255-i*40/(num-1));
+    //Color c = new Color(255,255-i*255/(num-1),0);
     return c;
   }
   public void paintComponent(Graphics g){

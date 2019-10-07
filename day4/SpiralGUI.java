@@ -42,7 +42,7 @@ class SpiralGUI extends JPanel implements ChangeListener
     n.add(numSlider);
 		add(n);
 
-    blueSlider = new JSlider(JSlider.VERTICAL,0,81,1);
+    blueSlider = new JSlider(JSlider.VERTICAL,0,100,1);
     blueSlider.addChangeListener(this);
     blueSlider.setMajorTickSpacing(50);
     blueSlider.setMinorTickSpacing(10);
